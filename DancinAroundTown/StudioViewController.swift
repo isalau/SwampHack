@@ -144,13 +144,22 @@ class StudioViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             {
                 //We saved our information
                 print("Saved New Event")
-                self.performSegueWithIdentifier("SaveToHome", sender: nil)
+                let alertControl: UIAlertController = UIAlertController(title: "Saved!", message: "Your class was saved.", preferredStyle: .Alert)
+                let ok = UIAlertAction(title: "OK", style: .Cancel) {action -> Void in}
+                alertControl.addAction(ok)
+                self.presentViewController(alertControl, animated: true, completion: nil)
+//                self.performSegueWithIdentifier("SaveToHome", sender: nil)
             }
             else
             {
                 //there was a problem
                 print(error)
                 print("Error: Did Not Save Event")
+                let alertControl: UIAlertController = UIAlertController(title: "Did not save", message: "Looks like something is missing. Please check your submission. ", preferredStyle: .Alert)
+                let ok = UIAlertAction(title: "OK", style: .Cancel) {action -> Void in}
+                alertControl.addAction(ok)
+                self.presentViewController(alertControl, animated: true, completion: nil)
+
             }
         }
 
